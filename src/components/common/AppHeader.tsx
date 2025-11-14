@@ -4,10 +4,10 @@ import {Search} from 'lucide-react'
 function AppHeader() {
   return (
     <header className="fixed top-0 z-10 w-full flex items-center justify-center bg-[#121212]">
-      <div className="w-full max-w-[1328px] flex items-center justify-between px-6 py-3">
+      <div className="w-full max-w-[1600px] flex items-center justify-between px-4 py-3">
         {/* 좌측 */}
         <div className="flex gap-5 items-center">
-          <div className="font-semibold text-white text-lg">DevGroup</div>
+          <div className="font-semibold text-white text-2xl">DevGroup</div>
           <div className="font-light text-white">Explore</div>
           {/*<Separator orientation="vertical" className="!h-4"/>*/}
           <div className="font-light text-white">Support</div>
