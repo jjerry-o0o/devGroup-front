@@ -3,10 +3,9 @@ import {FaTwitter, FaFacebook, FaLinkedin, FaYoutube, IoLogoGithub} from "@/asse
 
 function AppFooter() {
     const linkList = [
-        {subTitle: 'Product',  list: ['Features','Security','Team','Enterprise','Customer stories','Pricing']},
-        {subTitle: 'Platform',  list: ['Developer API','Partners','Atom','Electron','DevGroup Desktop']},
-        {subTitle: 'Support',  list: ['Help','Community Forum','Training','Status','Contact DevGroup']},
-        {subTitle: 'Company',  list: ['About','Blog','Careers','Press','Shop']},
+        {subTitle: 'Product',  list: ['Features','Explore']},
+        {subTitle: 'Support',  list: ['Support','Contact DevGroup']},
+        {subTitle: 'Company',  list: ['About','Blog']},
     ]
 
     return (
