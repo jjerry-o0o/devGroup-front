@@ -1,12 +1,8 @@
 import {Separator} from "@/components/ui";
 import {FaTwitter, FaFacebook, FaLinkedin, FaYoutube, IoLogoGithub} from "@/assets/icons/index.ts"
+import {linkList} from "@/assets/testData";
 
 function AppFooter() {
-    const linkList = [
-        {subTitle: 'Product',  list: ['Features','Explore']},
-        {subTitle: 'Support',  list: ['Support','Contact DevGroup']},
-        {subTitle: 'Company',  list: ['About','Blog']},
-    ]
 
     return (
         <div className="w-full h-90 px-40 pt-10 bg-[#24292e]">
