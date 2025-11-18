@@ -1,5 +1,5 @@
 // import {Separator} from "@/components/ui";
-import {Search} from 'lucide-react'
+import {Search} from '@/assets/icons'
 
 function AppHeader() {
   return (
