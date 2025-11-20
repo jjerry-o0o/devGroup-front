@@ -18,10 +18,10 @@ function Main() {
             {/*상단 메인 배너*/}
                 <section className="w-full flex flex-col ">
                     <div className="flex flex-col items-center justify-center h-94 mt-4 bg-linear-135 from-[#667eea] to-[#764ba2]">
-                        <h1 className="text-white text-[50px] font-semibold mb-4">
+                        <h1 className="text-white text-center text-[50px] font-semibold mb-4">
                             Welcome To DevGroup!
                         </h1>
-                        <p className="text-[24px] text-white mb-12">A collection of the best tools for development</p>
+                        <p className="text-[24px] text-center text-white mb-12">A collection of the best tools for development</p>
                         {/* 추후 shadcn 컴포넌트로 대체하기 */}
                         <label htmlFor="exploreBtn" className="flex justify-center items-center bg-white w-42 h-14 text-[22px] font-semibold rounded-sm">
                             <Search size="22" className="mr-2"/>

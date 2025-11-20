@@ -17,6 +17,7 @@ import { MdAdsClick } from "react-icons/md";
 import { IoEyeSharp } from "react-icons/io5";
 import { IoDocumentText } from "react-icons/io5";
 import { MdOutlineSupport } from "react-icons/md";
+import { IoIosMenu } from "react-icons/io";
 
 export {
     FaTwitter,
@@ -37,5 +38,6 @@ export {
     MdAdsClick,
     IoEyeSharp,
     IoDocumentText,
-    MdOutlineSupport
+    MdOutlineSupport,
+    IoIosMenu,
 };
