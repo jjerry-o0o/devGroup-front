@@ -41,24 +41,24 @@ function Main() {
                             const IconComponent = item.thumbnailIcon;
                             const formatUpdateAt = item.updatedAt.replace('T', ' ').slice(0, 16);
                             return (
-                                <div key={index} className="bg-white border p-4 w-200 mb-4 rounded-sm shadow-md">
-                                    <div className="flex items-center mb-2">
-                                        <IconComponent size="26" className="border mr-3"/>
-                                        <h5 className="text-[22px]">{item.title}</h5>
+                                <div key={index} className="bg-white border p-4 w-200 mb-6 rounded-sm shadow-md">
+                                    <div className="flex items-center mb-2 px-1">
+                                        <IconComponent size="50" className="border mr-3 p-1"/>
+                                        <h5 className="text-[24px]">{item.title}</h5>
                                     </div>
-                                    <span className="text-[#636363FF] text-[16px]">{item.introduction}</span>
+                                    <span className="text-[#636363FF] text-[16px] px-1">{item.introduction}</span>
                                     <Separator className="mt-4 mb-4"/>
-                                    <div className="flex justify-between items-center">
+                                    <div className="flex justify-between items-center px-1">
                                         <div className="flex items-center text-[16px]">
-                                            <FaThumbsUp color="#2496ed" className="mr-1"/>
-                                            <span className="mr-3">{item.likeCount}</span>
-                                            <IoEyeSharp color="#4D9F00FF" size="18" className="mr-1"/>
-                                            <span className="mr-3">{item.clickCount}</span>
-                                            <Clock size="16" className="mr-1"/>
+                                            <FaThumbsUp color="#2496ed" size="18" className="mr-2"/>
+                                            <span className="mr-4">{item.likeCount}</span>
+                                            <IoEyeSharp color="#4D9F00FF" size="20" className="mr-2"/>
+                                            <span className="mr-4">{item.clickCount}</span>
+                                            <Clock size="18" className="mr-2"/>
                                             <span>{formatUpdateAt}</span>
                                         </div>
                                         <div style={{backgroundColor: categoryBadgeColor[item.categoryEnName]}}
-                                             className="flex flex-col justify-center w-fit h-5 px-2 text-white text-[16px] rounded-sm"
+                                             className="flex flex-col justify-center w-fit h-6 px-3 text-white text-[16px] rounded-sm"
                                         >{item.categoryEnName}</div>
                                     </div>
                                 </div>
@@ -74,12 +74,12 @@ function Main() {
 
                     {/*오른쪽 시작하기 & 도움말/지원 block 두개*/}
                     <div className="flex flex-col ml-6">
-                        <div className="flex flex-col border w-100 h-fit shadow-md mb-5">
-                            <div className="flex px-4 py-2 items-center bg-[#f6f8fa] text-[16px]">
-                                <FaRocket color="#2496ed"/>
+                        <div className="flex flex-col border w-100 h-fit shadow-md mb-6">
+                            <div className="flex px-4 py-3 items-center bg-[#f6f8fa] text-[16px]">
+                                <FaRocket size="20" color="#2496ed"/>
                                 <p className="ml-2">시작하기</p>
                             </div>
-                            <div className="flex flex-col border-t h-38 bg-white px-4 py-3 justify-around text-[16px]">
+                            <div className="flex flex-col border-t h-42 bg-white px-4 py-3 justify-around text-[16px]">
                                 <div className="flex items-center">
                                     <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
                                     <span className="ml-2">도구 탐색하기</span>
@@ -92,28 +92,28 @@ function Main() {
                                     <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
                                     <span className="ml-2 ">도구를 통해 개발 생산성 증가하기</span>
                                 </div>
-                                <label htmlFor="startBtn" className="flex justify-center items-center bg-[#2496ed] text-white rounded-sm h-6 border-[#2496ed] mt-2">
+                                <label htmlFor="startBtn" className="flex justify-center items-center bg-[#2496ed] text-white rounded-sm h-8 border-[#2496ed] mt-2">
                                     <ChevronsRight size="14"/>
                                     <button id="startBtn" className="ml-1">시작하기</button>
                                 </label>
                             </div>
                         </div>
                         <div className="border shadow-md w-100">
-                            <div className="flex px-4 py-2 items-center bg-[#f6f8fa] text-[16px]">
-                                <FaLightbulb color="#ffc107"/>
+                            <div className="flex px-4 py-3 items-center bg-[#f6f8fa] text-[16px]">
+                                <FaLightbulb size="20" color="#ffc107"/>
                                 <p className="ml-2">도움말 & 지원</p>
                             </div>
-                            <div className="flex flex-col border-t h-39 bg-white px-4 py-3 text-[16px]">
+                            <div className="flex flex-col border-t bg-white px-4 pt-3 pb-4 text-[16px]">
                                 <p className="whitespace-pre-wrap mb-4 leading-relaxed">
                                     {`DevGroup 사용에 도움이 필요하신가요?\n다양한 지원 옵션을 확인해보세요.`}
                                 </p>
                                 <label htmlFor="supportBtn"
-                                       className="mb-2 flex justify-center items-center border border-[#2496ed] text-[#2496ed] w-full h-6 rounded-sm">
+                                       className="mb-2 flex justify-center items-center border border-[#2496ed] text-[#2496ed] w-full h-8 rounded-sm">
                                     <IoDocumentText size="14"/>
                                     <button id="viewDocumentBtn" className="ml-1">문서 보기</button>
                                 </label>
                                 <label htmlFor="supportBtn"
-                                       className="flex justify-center items-center border border-[#717171FF] text-[#717171FF] w-full h-6 rounded-sm">
+                                       className="flex justify-center items-center border border-[#717171FF] text-[#717171FF] w-full h-8 rounded-sm">
                                     <MdOutlineSupport size="14"/>
                                     <button id="supportBtn" className="ml-1">지원 요청</button>
                                 </label>
