@@ -16,7 +16,7 @@ function Main() {
     return (
         <>
             {/*상단 메인 배너*/}
-                <section className="mt-[60px] w-full flex flex-col ">
+                <section className="w-full flex flex-col ">
                     <div className="flex flex-col items-center justify-center h-74 mt-4 bg-linear-135 from-[#667eea] to-[#764ba2]">
                         <h1 className="text-white text-5xl font-semibold mb-5">
                             Welcome To DevGroup!

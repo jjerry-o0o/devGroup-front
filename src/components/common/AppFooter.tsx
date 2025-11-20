@@ -5,7 +5,7 @@ import {linkList} from "@/assets/testData";
 function AppFooter() {
 
     return (
-        <div className="w-full h-90 px-40 pt-10 bg-[#24292e]">
+        <div className="bottom-0 w-full h-fit px-40 pt-10 pb-10 bg-[#24292e]">
             <div className="flex justify-around text-[#8b949e]">
                 {linkList.map((link, index) => (
                     <div key={index}>
@@ -19,7 +19,7 @@ function AppFooter() {
                 ))}
 
             </div>
-            <Separator className="my-6 bg-[#8b949e]"/>
+            <Separator className="mt-12 mb-4 bg-[#8b949e]"/>
             <div className="flex justify-between">
                 <div className="flex gap-2 items-end">
                     <span className="font-semibold text-white text-lg">DevGroup</span>
