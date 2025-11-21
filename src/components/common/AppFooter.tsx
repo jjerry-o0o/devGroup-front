@@ -6,7 +6,7 @@ function AppFooter() {
 
     return (
         <div className="bottom-0  w-full  h-fit pt-10 pb-10 bg-[#24292e]">
-            <div className="max-w-[1800px] mx-auto flex flex-col">
+            <div className="max-w-[1800px] lg:mx-auto mx-[16px] flex flex-col">
                 <div className="flex justify-around text-[#8b949e]">
                     {linkList.map((link, index) => (
                         <div key={index}>
