@@ -1,6 +1,8 @@
-import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, FaLightbulb, IoDocumentText, MdOutlineSupport} from '@/assets/icons'
-import {repositoryList} from '@/assets/testData';
+import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, FaLightbulb, IoDocumentText, MdOutlineSupport, GiPlasticDuck} from '@/assets/icons'
+// import {repositoryList} from '@/assets/testData';
 import {Separator} from "@/components/ui";
+import axios from "axios";
+import {useEffect, useState} from "react";
 
 const categoryBadgeColor: Record<string, string> = {
     Official: '#2496EDFF',
@@ -12,7 +14,50 @@ const categoryBadgeColor: Record<string, string> = {
     Etc: '#4E4E4E',
 };
 
+interface RepositoryInfo {
+categoryEnName: string,
+clickCount: number,
+id: number,
+introduction: string,
+isPublic: boolean,
+likeCount: number,
+thumbnailPath: string,
+thumbnailWebLink: string,
+title: string,
+updatedAt: string,
+}
+
 function Main() {
+    const count = 2;
+    const [repositoryList, setRepositoryList] = useState<RepositoryInfo[]>([]);
+
+    const init = async () => {
+        /* fetch 연습 */
+        // try {
+        //     const response = await fetch(`http://localhost:8099/api/info/limit/${count}`);
+        //     const data = await response.json();
+        //     console.log('data : ', data)
+        // } catch (error) {
+        //     console.log('error : ', error)
+        // }
+
+        try {
+            axios.get(`http://localhost:8099/api/info/limit/${count}`)
+            .then(res => {
+                console.log('res : ', res.data);
+                console.log(typeof res.data.info)
+                setRepositoryList(res.data.info);
+            });
+        } catch (error) {
+            console.log('error : ', error)
+        }
+
+    }
+
+    useEffect(() => {
+        init()
+    }, []);
+
     return (
         <>
             {/*<div className="flex flex-col">*/}
@@ -38,13 +83,17 @@ function Main() {
                         <h3 className="text-[26px] text-[#24292e] mb-3 font-semibold">최신 리포지토리</h3>
                         <span className="text-[#24292e] text-[18px]">커뮤니티에서 인기 있는 최신 리포지토리들을 확인해보세요.</span>
                     </div>
-                    {repositoryList.map((item, index) => {
-                        const IconComponent = item.thumbnailIcon;
+                    {repositoryList ? repositoryList.map((item, index) => {
+                        // const IconComponent = item.thumbnailIcon;
+                        const thumbnail = item.thumbnailPath ? item.thumbnailPath : item.thumbnailWebLink ? item.thumbnailWebLink : '';
                         const formatUpdateAt = item.updatedAt.replace('T', ' ').slice(0, 16);
                         return (
                             <div key={index} className="bg-white border p-4 w-[800px] mb-6 rounded-sm shadow-md">
                                 <div className="flex items-center mb-2 px-1">
-                                    <IconComponent size="50" className="border mr-3 p-1"/>
+                                    {/*<IconComponent size="50" className="border mr-3 p-1"/>*/}
+                                    {thumbnail ? <img src={thumbnail} alt={item.title} height="50" width="50" className="border mr-3 p-1"/>
+                                    : <GiPlasticDuck size="50" className="border mr-3 p-1"/>}
+
                                     <h5 className="text-[24px]">{item.title}</h5>
                                 </div>
                                 <span className="text-[#636363FF] text-[16px] px-1">{item.introduction}</span>
@@ -64,7 +113,7 @@ function Main() {
                                 </div>
                             </div>
                         );
-                    })}
+                    }) : <div></div>}
                     <div className="flex flex-col items-center mb-6 lg:mb-14 mt-2">
                         <label htmlFor="viewMoreBtn"
                                className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[#2496ed] text-[#2496ed] text-[20px] lg:text-[16px]">
