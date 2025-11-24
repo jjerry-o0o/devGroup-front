@@ -3,6 +3,7 @@ import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, F
 import {Separator} from "@/components/ui";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const categoryBadgeColor: Record<string, string> = {
     Official: '#2496EDFF',
@@ -27,7 +28,8 @@ title: string,
 updatedAt: string,
 }
 
-function Main() {
+const Main = () => {
+    const navigate = useNavigate();
     const count = 2;
     const [repositoryList, setRepositoryList] = useState<RepositoryInfo[]>([]);
 
@@ -52,6 +54,10 @@ function Main() {
             console.log('error : ', error)
         }
 
+    }
+
+    const goToDetail = async (id: number) => {
+        navigate(`/page/info/${id}`);
     }
 
     useEffect(() => {
@@ -86,9 +92,10 @@ function Main() {
                     {repositoryList ? repositoryList.map((item, index) => {
                         // const IconComponent = item.thumbnailIcon;
                         const thumbnail = item.thumbnailPath ? item.thumbnailPath : item.thumbnailWebLink ? item.thumbnailWebLink : '';
-                        const formatUpdateAt = item.updatedAt.replace('T', ' ').slice(0, 16);
+                        // const formatUpdateAt = item.updatedAt.replace('T', ' ').slice(0, 16);
                         return (
-                            <div key={index} className="bg-white border p-4 w-[800px] mb-6 rounded-sm shadow-md">
+                            <div key={index} className="bg-white border p-4 w-[800px] mb-6 rounded-sm shadow-md"
+                                 onClick={() => goToDetail(item.id)}>
                                 <div className="flex items-center mb-2 px-1">
                                     {/*<IconComponent size="50" className="border mr-3 p-1"/>*/}
                                     {thumbnail ? <img src={thumbnail} alt={item.title} height="50" width="50" className="border mr-3 p-1"/>
@@ -105,7 +112,8 @@ function Main() {
                                         <IoEyeSharp color="#4D9F00FF" size="20" className="mr-2"/>
                                         <span className="mr-4">{item.clickCount}</span>
                                         <Clock size="18" className="mr-2"/>
-                                        <span>{formatUpdateAt}</span>
+                                        {/*<span>{formatUpdateAt}</span>*/}
+                                        <span>{item.updatedAt}</span>
                                     </div>
                                     <div style={{backgroundColor: categoryBadgeColor[item.categoryEnName]}}
                                          className="flex flex-col justify-center w-fit h-6 px-3 text-white text-[16px] rounded-sm"
@@ -180,5 +188,7 @@ function Main() {
         </>
     );
 }
-
+// 다른 곳에서 import 시 이름 변경 가능
+// export default Main;
+// 불가능
 export {Main};

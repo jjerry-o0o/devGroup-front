@@ -18,6 +18,11 @@ import { IoEyeSharp } from "react-icons/io5";
 import { IoDocumentText } from "react-icons/io5";
 import { MdOutlineSupport } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
+import { IoLink } from "react-icons/io5";
+import { TbExternalLink } from "react-icons/tb";
+import { FaInfoCircle } from "react-icons/fa";
+import { GoHeartFill } from "react-icons/go";
+import { GoHeart } from "react-icons/go";
 
 export {
     FaTwitter,
@@ -40,4 +45,9 @@ export {
     IoDocumentText,
     MdOutlineSupport,
     IoIosMenu,
+    IoLink,
+    TbExternalLink,
+    FaInfoCircle,
+    GoHeartFill,
+    GoHeart,
 };
