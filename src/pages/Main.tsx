@@ -1,67 +1,30 @@
 import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, FaLightbulb, IoDocumentText, MdOutlineSupport, GiPlasticDuck} from '@/assets/icons'
-// import {repositoryList} from '@/assets/testData';
 import {Separator} from "@/components/ui";
-import axios from "axios";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-
-const categoryBadgeColor: Record<string, string> = {
-    Official: '#2496EDFF',
-    Web: '#6EB185',
-    Programs: '#CD3931',
-    AI: '#7B8E0B',
-    Plugins: '#FFC107',
-    CodingTest: '#BF35B7',
-    Etc: '#4E4E4E',
-};
-
-interface RepositoryInfo {
-categoryEnName: string,
-clickCount: number,
-id: number,
-introduction: string,
-isPublic: boolean,
-likeCount: number,
-thumbnailPath: string,
-thumbnailWebLink: string,
-title: string,
-updatedAt: string,
-}
+import type {RepositoryInfoList} from '@/types/info.ts';
+import {categoryBadgeColor} from '@/utils/formatUtils.ts';
+import {getLimitRepositoryList} from "@/api/infoApi.ts";
 
 const Main = () => {
     const navigate = useNavigate();
     const count = 2;
-    const [repositoryList, setRepositoryList] = useState<RepositoryInfo[]>([]);
-
-    const init = async () => {
-        /* fetch 연습 */
-        // try {
-        //     const response = await fetch(`http://localhost:8099/api/info/limit/${count}`);
-        //     const data = await response.json();
-        //     console.log('data : ', data)
-        // } catch (error) {
-        //     console.log('error : ', error)
-        // }
-
-        try {
-            axios.get(`http://localhost:8099/api/info/limit/${count}`)
-            .then(res => {
-                console.log('res : ', res.data);
-                console.log(typeof res.data.info)
-                setRepositoryList(res.data.info);
-            });
-        } catch (error) {
-            console.log('error : ', error)
-        }
-
-    }
+    const [repositoryList, setRepositoryList] = useState<RepositoryInfoList[]>([]);
 
     const goToDetail = async (id: number) => {
         navigate(`/page/info/${id}`);
     }
 
     useEffect(() => {
-        init()
+        try {
+            getLimitRepositoryList(count)
+            .then(res => {
+                setRepositoryList(res.data.info);
+            });
+        } catch (error) {
+            console.log('error : ', error)
+        }
+
     }, []);
 
     return (
