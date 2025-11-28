@@ -2,14 +2,14 @@ import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, F
 import {Separator} from "@/components/ui";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import type {RepositoryInfoList} from '@/types/info.ts';
+import type {RepositoryInfo} from '@/types/info.ts';
 import {categoryBadgeColor} from '@/utils/formatUtils.ts';
 import {getLimitRepositoryList} from "@/api/infoApi.ts";
 
 const Main = () => {
     const navigate = useNavigate();
     const count = 2;
-    const [repositoryList, setRepositoryList] = useState<RepositoryInfoList[]>([]);
+    const [repositoryList, setRepositoryList] = useState<RepositoryInfo[]>([]);
 
     const goToDetail = async (id: number) => {
         navigate(`/page/info/${id}`);
@@ -19,7 +19,8 @@ const Main = () => {
         try {
             getLimitRepositoryList(count)
             .then(res => {
-                setRepositoryList(res.data.info);
+                const result = res.data;
+                setRepositoryList(result.info);
             });
         } catch (error) {
             console.log('error : ', error)
@@ -52,7 +53,7 @@ const Main = () => {
                         <h3 className="text-[26px] text-[#24292e] mb-3 font-semibold">최신 리포지토리</h3>
                         <span className="text-[#24292e] text-[18px]">커뮤니티에서 인기 있는 최신 리포지토리들을 확인해보세요.</span>
                     </div>
-                    {repositoryList ? repositoryList.map((item, index) => {
+                    {repositoryList.map((item, index) => {
                         // const IconComponent = item.thumbnailIcon;
                         const thumbnail = item.thumbnailPath ? item.thumbnailPath : item.thumbnailWebLink ? item.thumbnailWebLink : '';
                         // const formatUpdateAt = item.updatedAt.replace('T', ' ').slice(0, 16);
@@ -84,7 +85,7 @@ const Main = () => {
                                 </div>
                             </div>
                         );
-                    }) : <div></div>}
+                    })}
                     <div className="flex flex-col items-center mb-6 lg:mb-14 mt-2">
                         <label htmlFor="viewMoreBtn"
                                className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[#2496ed] text-[#2496ed] text-[20px] lg:text-[16px]">
