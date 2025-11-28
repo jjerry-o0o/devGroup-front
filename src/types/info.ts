@@ -1,4 +1,8 @@
-export interface RepositoryInfoList {
+export interface RepositoryInfoDto {
+    info: RepositoryInfo[];
+}
+
+export interface RepositoryInfo {
     categoryEnName: string;
     clickCount: number;
     id: number;
@@ -11,7 +15,7 @@ export interface RepositoryInfoList {
     updatedAt: string;
 }
 
-export interface RepositoryInfo {
+export interface RepositoryDetailInfo {
     id: number;
     title: string;
     isPublic: boolean;
