@@ -23,6 +23,8 @@ import { TbExternalLink } from "react-icons/tb";
 import { FaInfoCircle } from "react-icons/fa";
 import { GoHeartFill } from "react-icons/go";
 import { GoHeart } from "react-icons/go";
+import { IoPersonOutline } from "react-icons/io5";
+import { IoPerson } from "react-icons/io5";
 
 export {
     FaTwitter,
@@ -50,4 +52,6 @@ export {
     FaInfoCircle,
     GoHeartFill,
     GoHeart,
+    IoPersonOutline,
+    IoPerson,
 };
