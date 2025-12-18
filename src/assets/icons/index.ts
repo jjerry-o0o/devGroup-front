@@ -25,6 +25,8 @@ import { GoHeartFill } from "react-icons/go";
 import { GoHeart } from "react-icons/go";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoPerson } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+import { FaMoon } from "react-icons/fa";
 
 export {
     FaTwitter,
@@ -54,4 +56,6 @@ export {
     GoHeart,
     IoPersonOutline,
     IoPerson,
+    IoSunny,
+    FaMoon,
 };

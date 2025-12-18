@@ -4,11 +4,14 @@ import {Main} from "@/pages/Main.tsx";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
+    const toggleDark = () => {
+        document.documentElement.classList.toggle("dark");
+    }
 
     return (
         <div className="page">
             <BrowserRouter>
-                <AppHeader/>
+                <AppHeader toggleDark={toggleDark}/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/page/info/:id" element={<DetailInfo/>}/>

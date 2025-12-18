@@ -56,12 +56,12 @@ const DetailInfo = () => {
 
     return (
         <div className="">
-            <section className="flex flex-col items-center mt-6 h-fit bg-[#f6f8fa] px-[67px]">
+            <section className="flex flex-col items-center mt-6 h-fit bg-[var(--bg-gray)] px-[67px]">
                 <div className="flex flex-col max-w-[1320px] w-full">
                     <div className="flex pt-8">
                         {repositoryDetailInfo?.thumbnailPath || repositoryDetailInfo?.thumbnailWebLink
                             ? <img src={repositoryDetailInfo?.thumbnailPath ?? repositoryDetailInfo?.thumbnailWebLink} alt={repositoryDetailInfo?.title}
-                                   className="h-[120px] w-[120px] border mr-[12px] mb-[18px] p-1 rounded-xl bg-white
+                                   className="h-[120px] w-[120px] border mr-[12px] mb-[18px] p-1 rounded-xl bg-background
                                               hover:scale-105 hover:border-[#136ffe] transition-all duration-200 "/>
                             : <GiPlasticDuck size="50" className="border mr-3 p-1"/>
                         }
@@ -80,27 +80,27 @@ const DetailInfo = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="flex border rounded-xl bg-white w-full p-6 mb-8 justify-between">
+                    <div className="flex border rounded-xl bg-background w-full p-6 mb-8 justify-between">
                         <div className="flex gap-4">
-                            <div className="flex items-center bg-[#f6f8fa] w-fit gap-2 p-2">
+                            <div className="flex items-center bg-[var(--bg-gray)] w-fit gap-2 p-2">
                                 <GoHeartFill size="14" color="#dc3545"/><span className="font-[600]">{repositoryDetailInfo?.likeCount}</span> likes
                             </div>
-                            <div className="flex items-center bg-[#f6f8fa] w-fit gap-2 p-2">
+                            <div className="flex items-center bg-[var(--bg-gray)] w-fit gap-2 p-2">
                                 <IoEyeSharp size="15" color="#136ffe"/><span className="font-[600]">{repositoryDetailInfo?.clickCount}</span> views
                             </div>
                         </div>
-                        <div className="flex items-center bg-[#f6f8fa] w-fit gap-2 p-2">
+                        <div className="flex items-center bg-[var(--bg-gray)] w-fit gap-2 p-2">
                             <Clock size="15" color="#136ffe"/>{repositoryDetailInfo?.updatedAt}
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="flex flex-col items-center bg-white border-t px-[67px] pt-8">
+            <section className="flex flex-col items-center bg-background border-t px-[67px] pt-8">
                 <div className="flex flex-col max-w-[1320px] w-full">
                     <span className="flex items-center text-[26px] font-[600]"><IoDocumentText color="#136ffe" size="30" className="mr-2"/>Overview</span>
                     <Separator className="mt-4 mb-8 bg-[#8b949e]"/>
-                    <div className="flex justify-center gap-3 border bg-[#f6f8fa] py-8 mb-6">
+                    <div className="flex justify-center gap-3 border bg-[var(--bg-gray)] py-8 mb-6">
                         <label htmlFor="visitBtn"
                                className="flex items-center w-fit border py-4 px-5 rounded-full text-[16px] text-white font-[600] bg-linear-135 from-[#667eea] to-[#136ffe]
                                           hover:scale-110 duration-200">
@@ -112,10 +112,10 @@ const DetailInfo = () => {
                             {likedStatus
                                 ? <GoHeartFill className="mr-2" size="20" color="#dc3545"/>
                                 : <GoHeart className="mr-2" size="20"/>}
-                            <button id="likedBtn" onClick={() => id && toggleLiked(id)}>Like</button>
+                            <button id="likedBtn" onClick={() => id && toggleLiked(id)}>{likedStatus ? 'Liked' : 'Like'}</button>
                         </label>
                     </div>
-                    <div className="border bg-white h-fit p-[32px] mb-[64px]">
+                    <div className="border bg-background h-fit p-[32px] mb-[64px]">
                         {repositoryDetailInfo?.description}
                     </div>
                 </div>
