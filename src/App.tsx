@@ -1,7 +1,6 @@
-import { AppHeader, AppFooter } from "@/components/common";
-import {DetailInfo} from "@/pages/DetailInfo.tsx"
-import {Main} from "@/pages/Main.tsx";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { AppHeader, AppFooter } from "@/components";
+import { Main, DetailInfo, Explorer } from "@/pages/index.ts";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
     const toggleDark = () => {
@@ -15,6 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/page/info/:id" element={<DetailInfo/>}/>
+                    <Route path="/page/explorer" element={<Explorer/>}/>
                 </Routes>
                 <AppFooter/>
             </BrowserRouter>

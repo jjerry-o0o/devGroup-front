@@ -1,5 +1,5 @@
 import axiosApi from '@/api/axiosInstans.ts'
-import type {RepositoryDetailInfo, RepositoryInfoDto} from '@/types/info.ts';
+import type {CategoryInfo, RepositoryDetailInfo, RepositoryInfoDto} from '@/types/info.ts';
 
 export const getLimitRepositoryList = (count: number) => {
     return axiosApi.get<RepositoryInfoDto>(`/info/limit/${count}`);
@@ -11,4 +11,8 @@ export const getRepositoryInfo = (id: string) => {
 
 export const postLikeRepository = (id: number) => {
     return axiosApi.post<boolean>(`/info/like/${id}`);
+}
+
+export const getUseCategories = () => {
+    return axiosApi.get<CategoryInfo[]>(`/category`);
 }

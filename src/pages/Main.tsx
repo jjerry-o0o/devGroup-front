@@ -33,7 +33,7 @@ const Main = () => {
             {/*<div className="flex flex-col">*/}
             {/*상단 메인 배너*/}
             <section className="w-full flex flex-col ">
-                <div className="flex flex-col items-center justify-center h-94 mt-4 bg-linear-135 from-[var(--point-blue)] to-[var(--point-purple)]">
+                <div className="flex flex-col items-center justify-center h-94 mt-6 bg-linear-135 from-[var(--point-blue)] to-[var(--point-purple)]">
                     <h1 className="text-white text-center text-[50px] font-semibold mb-4">
                         Welcome To DevGroup!
                     </h1>
@@ -41,7 +41,7 @@ const Main = () => {
                     {/* 추후 shadcn 컴포넌트로 대체하기 */}
                     <label htmlFor="exploreBtn" className="flex justify-center items-center bg-white w-42 h-14 text-[22px] font-semibold rounded-sm">
                         <Search size="22" className="mr-2" color="#454545FF"/>
-                        <button id="exploreBtn" className="text-[#454545FF]">Explore</button>
+                        <button id="exploreBtn" className="text-[#454545FF]" onClick={() => navigate('/page/explorer')}>Explore</button>
                     </label>
                 </div>
             </section>
@@ -71,7 +71,7 @@ const Main = () => {
                                 <Separator className="mt-4 mb-4"/>
                                 <div className="flex justify-between items-center px-1">
                                     <div className="flex items-center text-[16px]">
-                                        <FaThumbsUp color="#2496ed" size="18" className="mr-2"/>
+                                        <FaThumbsUp color="var(--btn-blue)" size="18" className="mr-2"/>
                                         <span className="mr-4">{item.likeCount}</span>
                                         <IoEyeSharp color="#4D9F00FF" size="20" className="mr-2"/>
                                         <span className="mr-4">{item.clickCount}</span>
@@ -88,7 +88,7 @@ const Main = () => {
                     })}
                     <div className="flex flex-col items-center mb-6 lg:mb-14 mt-2">
                         <label htmlFor="viewMoreBtn"
-                               className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[#2496ed] text-[#2496ed] text-[20px] lg:text-[16px]">
+                               className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[var(--btn-blue)] text-[var(--btn-blue)] text-[20px] lg:text-[16px]">
                             <ChevronsRight/>
                             <button id="viewMoreBtn">더 많은 리포지토리 보기</button>
                         </label>
@@ -100,7 +100,7 @@ const Main = () => {
                     <div className="flex flex-row lg:flex-col gap-[20px]">
                         <div className="border shadow-md w-[390px] lg:w-[400px] mb-[16px]">
                             <div className="flex px-4 py-3 items-center bg-[var(--bg-gray)] text-foreground text-[18px] lg:text-[16px]">
-                                <FaRocket size="20" color="#2496ed"/>
+                                <FaRocket size="20" color="var(--btn-blue)"/>
                                 <p className="ml-2">시작하기</p>
                             </div>
                             <div className="flex flex-col border-t h-46 bg-background px-4 py-3 justify-around text-[16px]">
@@ -117,7 +117,7 @@ const Main = () => {
                                     <span className="ml-2 ">도구를 통해 개발 생산성 증가하기</span>
                                 </div>
                                 <label htmlFor="startBtn"
-                                       className="flex justify-center items-center bg-[#2496ed] text-white rounded-sm h-10 lg:h-8 border-[#2496ed] mt-2">
+                                       className="flex justify-center items-center bg-[var(--btn-blue)] text-white rounded-sm h-10 lg:h-8 border-[var(--btn-blue)] mt-2">
                                     <ChevronsRight size="14"/>
                                     <button id="startBtn" className="ml-1">시작하기</button>
                                 </label>
@@ -134,7 +134,7 @@ const Main = () => {
                                     {`DevGroup 사용에 도움이 필요하신가요?\n다양한 지원 옵션을 확인해보세요.`}
                                 </p>
                                 <label htmlFor="supportBtn"
-                                       className="mb-2 flex justify-center items-center border border-[#2496ed] text-[#2496ed] w-full h-10 lg:h-8 rounded-sm">
+                                       className="mb-2 flex justify-center items-center border border-[var(--btn-blue)] text-[var(--btn-blue)var(--btn-blue)] w-full h-10 lg:h-8 rounded-sm">
                                     <IoDocumentText size="14"/>
                                     <button id="viewDocumentBtn" className="ml-1">문서 보기</button>
                                 </label>

@@ -27,6 +27,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { IoPerson } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
 import { FaMoon } from "react-icons/fa";
+import { FaArrowRotateRight } from "react-icons/fa6";
+import { FaFilter } from "react-icons/fa6";
 
 export {
     FaTwitter,
@@ -58,4 +60,6 @@ export {
     IoPerson,
     IoSunny,
     FaMoon,
+    FaArrowRotateRight,
+    FaFilter,
 };

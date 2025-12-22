@@ -32,3 +32,13 @@ export interface RepositoryDetailInfo {
     tagList: string;
 }
 
+export interface CategoryInfo {
+    id: number;
+    categoryCode: string;
+    krName: string;
+    enName: string;
+    // description: string;
+    // sortOrder: number;
+    // useYn: boolean;
+    // deleted: boolean;
+}

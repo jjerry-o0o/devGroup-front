@@ -1,6 +1,6 @@
 import {Search, IoIosMenu, IoPersonOutline, IoPerson, IoSunny, FaMoon} from '@/assets/icons'
 import {useNavigate} from "react-router-dom";
-import {JSX, useState} from "react";
+import {useState} from "react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -24,7 +24,7 @@ function AppHeader({toggleDark}: AppHeaderProps) {
                 <div className="flex gap-5 items-center">
                     <div className="font-semibold text-foreground text-[24px]" onClick={() => navigate('/')}>DevGroup</div>
                     <div className="hidden lg:flex gap-5">
-                        <div className="text-foreground text-[18px]">Explore</div>
+                        <div className="text-foreground text-[18px]" onClick={() => navigate('/page/explorer')}>Explore</div>
                         <div className="text-foreground text-[18px]">Support & Suggest</div>
                     </div>
                 </div>
