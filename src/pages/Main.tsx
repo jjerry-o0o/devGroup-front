@@ -1,10 +1,23 @@
-import {Search, FaThumbsUp, IoEyeSharp, Clock, ChevronsRight, FaRocket, Check, FaLightbulb, IoDocumentText, MdOutlineSupport, GiPlasticDuck} from '@/assets/icons'
+import {
+    Search,
+    FaThumbsUp,
+    IoEyeSharp,
+    Clock,
+    ChevronsRight,
+    FaRocket,
+    Check,
+    FaLightbulb,
+    IoDocumentText,
+    MdOutlineSupport,
+    GiPlasticDuck
+} from '@/assets/icons'
 import {Separator} from "@/components/ui";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import type {RepositoryInfo} from '@/types/info.ts';
 import {categoryBadgeColor} from '@/utils/formatUtils.ts';
 import {getLimitRepositoryList} from "@/api/infoApi.ts";
+import {SubBox} from "@/components";
 
 const Main = () => {
     const navigate = useNavigate();
@@ -62,9 +75,10 @@ const Main = () => {
                                  onClick={() => goToDetail(item.id)}>
                                 <div className="flex items-center mb-2 px-1">
                                     {/*<IconComponent size="50" className="border mr-3 p-1"/>*/}
-                                    {thumbnail ? <img src={thumbnail} alt={item.title} height="50" width="50" className="border mr-3 p-1"/>
-                                    : <GiPlasticDuck size="50" className="border mr-3 p-1"/>}
-
+                                    {thumbnail
+                                        ? <img src={thumbnail} alt={item.title} height="50" width="50" className="border mr-3 p-1"/>
+                                        : <GiPlasticDuck size="50" className="border mr-3 p-1"/>
+                                    }
                                     <h5 className="text-[24px]">{item.title}</h5>
                                 </div>
                                 <span className="text-foreground text-[16px] px-1">{item.introduction}</span>
@@ -87,8 +101,7 @@ const Main = () => {
                         );
                     })}
                     <div className="flex flex-col items-center mb-6 lg:mb-14 mt-2">
-                        <label htmlFor="viewMoreBtn"
-                               className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[var(--btn-blue)] text-[var(--btn-blue)] text-[20px] lg:text-[16px]">
+                        <label htmlFor="viewMoreBtn" className="flex border-[2px] w-[350px] justify-center lg:w-fit px-4 py-1 rounded-sm border-[var(--btn-blue)] text-[var(--btn-blue)] text-[20px] lg:text-[16px]">
                             <ChevronsRight/>
                             <button id="viewMoreBtn">더 많은 리포지토리 보기</button>
                         </label>
@@ -96,56 +109,50 @@ const Main = () => {
                 </div>
 
                 {/*오른쪽 시작하기 & 도움말/지원 block 두개*/}
-                <div className="flex flex-col lg:ml-6 mb-12">
-                    <div className="flex flex-row lg:flex-col gap-[20px]">
-                        <div className="border shadow-md w-[390px] lg:w-[400px] mb-[16px]">
-                            <div className="flex px-4 py-3 items-center bg-[var(--bg-gray)] text-foreground text-[18px] lg:text-[16px]">
-                                <FaRocket size="20" color="var(--btn-blue)"/>
-                                <p className="ml-2">시작하기</p>
-                            </div>
-                            <div className="flex flex-col border-t h-46 bg-background px-4 py-3 justify-around text-[16px]">
-                                <div className="flex items-center">
-                                    <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
-                                    <span className="ml-2">도구 탐색하기</span>
+                <div className="flex flex-row lg:flex-col lg:ml-6 mb-12 gap-[20px]">
+                    <SubBox titleIcon={<FaRocket size="20" color="var(--btn-blue)"/>} title="시작하기" boxWidth="w-[390px] lg:w-[400px]"
+                            content={<>
+                                <div className="flex flex-col justify-around text-[16px] gap-[10px]">
+                                    <div className="flex items-center">
+                                        <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
+                                        <span className="ml-2">도구 탐색하기</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
+                                        <span className="ml-2 ">즐겨찾기 추가하기</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
+                                        <span className="ml-2 ">도구를 통해 개발 생산성 증가하기</span>
+                                    </div>
+                                    <label htmlFor="startBtn"
+                                           className="flex justify-center items-center bg-[var(--btn-blue)] text-white rounded-sm h-10 lg:h-8 border-[var(--btn-blue)] mt-2">
+                                        <ChevronsRight size="14"/>
+                                        <button id="startBtn" className="ml-1">시작하기</button>
+                                    </label>
                                 </div>
-                                <div className="flex items-center">
-                                    <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
-                                    <span className="ml-2 ">즐겨찾기 추가하기</span>
-                                </div>
-                                <div className="flex items-center">
-                                    <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
-                                    <span className="ml-2 ">도구를 통해 개발 생산성 증가하기</span>
-                                </div>
-                                <label htmlFor="startBtn"
-                                       className="flex justify-center items-center bg-[var(--btn-blue)] text-white rounded-sm h-10 lg:h-8 border-[var(--btn-blue)] mt-2">
-                                    <ChevronsRight size="14"/>
-                                    <button id="startBtn" className="ml-1">시작하기</button>
-                                </label>
-                            </div>
-                        </div>
+                            </>}
+                    />
+                    <SubBox titleIcon={<FaLightbulb size="20" color="#ffc107"/>} title="도움말 & 지원" boxWidth="w-[390px] lg:w-[400px]"
+                            content={<>
+                                <div className="flex flex-col bg-background  text-[16px]">
+                                    <p className="whitespace-pre-wrap mb-4 leading-relaxed">
+                                        {`DevGroup 사용에 도움이 필요하신가요?\n다양한 지원 옵션을 확인해보세요.`}
+                                    </p>
+                                    <label htmlFor="supportBtn"
+                                           className="mb-2 flex justify-center items-center border border-[var(--btn-blue)] text-[var(--btn-blue)var(--btn-blue)] w-full h-10 lg:h-8 rounded-sm">
+                                        <IoDocumentText size="14"/>
+                                        <button id="viewDocumentBtn" className="ml-1">문서 보기</button>
+                                    </label>
 
-                        <div className="border shadow-md w-[390px] lg:w-[400px] h-fit">
-                            <div className="flex px-4 py-3 items-center bg-[var(--bg-gray)] text-foreground text-[18px] lg:text-[16px]">
-                                <FaLightbulb size="20" color="#ffc107"/>
-                                <p className="ml-2">도움말 & 지원</p>
-                            </div>
-                            <div className="flex flex-col border-t bg-background  px-4 pt-3 pb-4 text-[16px]">
-                                <p className="whitespace-pre-wrap mb-4 leading-relaxed">
-                                    {`DevGroup 사용에 도움이 필요하신가요?\n다양한 지원 옵션을 확인해보세요.`}
-                                </p>
-                                <label htmlFor="supportBtn"
-                                       className="mb-2 flex justify-center items-center border border-[var(--btn-blue)] text-[var(--btn-blue)var(--btn-blue)] w-full h-10 lg:h-8 rounded-sm">
-                                    <IoDocumentText size="14"/>
-                                    <button id="viewDocumentBtn" className="ml-1">문서 보기</button>
-                                </label>
-                                <label htmlFor="supportBtn"
-                                       className="flex justify-center items-center border border-[#717171FF] text-[#717171FF] w-full h-10 lg:h-8 rounded-sm">
-                                    <MdOutlineSupport size="14"/>
-                                    <button id="supportBtn" className="ml-1">지원 요청 & 신규 제안</button>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                                    <label htmlFor="supportBtn"
+                                           className="flex justify-center items-center border border-[#717171FF] text-[#717171FF] w-full h-10 lg:h-8 rounded-sm">
+                                        <MdOutlineSupport size="14"/>
+                                        <button id="supportBtn" className="ml-1">지원 요청 & 신규 제안</button>
+                                    </label>
+                                </div>
+                            </>}
+                    />
                 </div>
             </section>
             {/*</div>*/}
