@@ -9,7 +9,7 @@ interface SubBoxProps {
 
 const SubBox = ({titleIcon, title, content, boxWidth}: SubBoxProps) => {
     return <>
-        <div className={`border ${boxWidth} rounded-sm shadow-xl`}>
+        <div className={`border ${boxWidth} shadow-xl`}>
             <div className="flex items-center gap-[8px] pl-[14px] h-[40px] border-b bg-[var(--bg-gray)]">
                 {titleIcon}
                 <span className="text-[16px]">{title}</span>

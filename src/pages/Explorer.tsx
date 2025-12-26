@@ -1,4 +1,4 @@
-import {Search, FaArrowRotateRight, FaFilter, Check} from "@/assets/icons";
+import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn} from "@/assets/icons";
 import {useEffect, useState} from "react";
 import {getUseCategories} from "@/api/infoApi.ts";
 import type {CategoryInfo} from "@/types/info.ts";
@@ -7,6 +7,11 @@ import {Separator} from "@/components/ui";
 
 const Explorer = () => {
     const [categories, setCategories] = useState<CategoryInfo[]>();
+    const SORT_OPTIONS = [
+        {id: 'sortStars', value: 'stars', label: '좋아요순', Icon: FaThumbsUp},
+        {id: 'sortUpdated', value: 'updated', label: '최근 업데이트순', Icon: Clock},
+        {id: 'sortName', value: 'name', label: '이름순', Icon: FaSortAlphaDown},
+    ]
 
     useEffect(() => {
         try {
@@ -40,7 +45,7 @@ const Explorer = () => {
                     </button>
                 </div>
                 <div className="flex">
-                    <div className="border">
+                    <div className="flex flex-col gap-[20px]">
                         <SubBox titleIcon={<FaFilter size="16px"/>} title={'Filter by'} boxWidth="w-[280px]"
                                 content={<>
                                     <div className="flex flex-col gap-[4px]">
@@ -56,9 +61,20 @@ const Explorer = () => {
                                         ))}
                                     </div>
                                     <Separator className="my-[20px]"/>
-                                    <div className="flex flex-col">
-                                        <span>정렬</span>
-                                        <input type="radio" value="stars"/>
+                                    <div className="flex flex-col gap-[10px]">
+                                        <span className="text-[16px]">정렬</span>
+                                        {SORT_OPTIONS.map(option => (
+                                            <label key={option.id} htmlFor={option.id} className="flex items-center">
+                                                <input type="radio" id={option.id} value={option.value} name="sort" className="hidden peer"/>
+                                                <div className="flex mr-[10px] peer-checked:hidden items-center">
+                                                    <IoRadioButtonOff size="20" color="var(--border)"/>
+                                                </div>
+                                                <div className="hidden mr-[10px] peer-checked:flex items-center">
+                                                    <IoRadioButtonOn size="20" color="var(--btn-blue)"/>
+                                                </div>
+                                                <option.Icon className="mr-[6px]" size="15"/><span>{option.label}</span>
+                                            </label>
+                                        ))}
                                     </div>
                                 </>}
                         />
