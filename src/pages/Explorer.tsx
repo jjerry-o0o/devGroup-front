@@ -2,7 +2,7 @@ import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAl
 import {useEffect, useState} from "react";
 import {getUseCategories} from "@/api/infoApi.ts";
 import type {CategoryInfo} from "@/types/info.ts";
-import {SubBox} from "@/components"
+import {SubBox, Button} from "@/components"
 import {Separator} from "@/components/ui";
 
 const Explorer = () => {
@@ -61,7 +61,7 @@ const Explorer = () => {
                                         ))}
                                     </div>
                                     <Separator className="my-[20px]"/>
-                                    <div className="flex flex-col gap-[10px]">
+                                    <div className="flex flex-col gap-[10px] mb-[16px]">
                                         <span className="text-[16px]">정렬</span>
                                         {SORT_OPTIONS.map(option => (
                                             <label key={option.id} htmlFor={option.id} className="flex items-center">
@@ -76,6 +76,7 @@ const Explorer = () => {
                                             </label>
                                         ))}
                                     </div>
+                                    <Button id="filterApply" icon={<Search size="18"/>} btnName="필터 적용" textColor="#fff" bgColor="var(--btn-blue)"/>
                                 </>}
                         />
                         <SubBox titleIcon="" title="인기토픽" boxWidth="w-[280px]"

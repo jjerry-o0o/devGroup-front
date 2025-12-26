@@ -17,7 +17,7 @@ import {useNavigate} from "react-router-dom";
 import type {RepositoryInfo} from '@/types/info.ts';
 import {categoryBadgeColor} from '@/utils/formatUtils.ts';
 import {getLimitRepositoryList} from "@/api/infoApi.ts";
-import {SubBox} from "@/components";
+import {SubBox, Button} from "@/components";
 
 const Main = () => {
     const navigate = useNavigate();
@@ -125,31 +125,18 @@ const Main = () => {
                                         <Check color="#4D9F00FF" strokeWidth={3} size={15}/>
                                         <span className="ml-2 ">도구를 통해 개발 생산성 증가하기</span>
                                     </div>
-                                    <label htmlFor="startBtn"
-                                           className="flex justify-center items-center bg-[var(--btn-blue)] text-white rounded-sm h-10 lg:h-8 border-[var(--btn-blue)] mt-2">
-                                        <ChevronsRight size="14"/>
-                                        <button id="startBtn" className="ml-1">시작하기</button>
-                                    </label>
+                                    <Button id="startBtn" icon={<ChevronsRight size="14"/>} btnName="시작하기" bgColor="var(--btn-blue)" textColor="#fff"/>
                                 </div>
                             </>}
                     />
                     <SubBox titleIcon={<FaLightbulb size="20" color="#ffc107"/>} title="도움말 & 지원" boxWidth="w-[390px] lg:w-[400px]"
                             content={<>
-                                <div className="flex flex-col bg-background  text-[16px]">
-                                    <p className="whitespace-pre-wrap mb-4 leading-relaxed">
+                                <div className="flex flex-col bg-background  text-[16px] gap-[2px]">
+                                    <p className="whitespace-pre-wrap leading-relaxed mb-[8px]">
                                         {`DevGroup 사용에 도움이 필요하신가요?\n다양한 지원 옵션을 확인해보세요.`}
                                     </p>
-                                    <label htmlFor="supportBtn"
-                                           className="mb-2 flex justify-center items-center border border-[var(--btn-blue)] text-[var(--btn-blue)var(--btn-blue)] w-full h-10 lg:h-8 rounded-sm">
-                                        <IoDocumentText size="14"/>
-                                        <button id="viewDocumentBtn" className="ml-1">문서 보기</button>
-                                    </label>
-
-                                    <label htmlFor="supportBtn"
-                                           className="flex justify-center items-center border border-[#717171FF] text-[#717171FF] w-full h-10 lg:h-8 rounded-sm">
-                                        <MdOutlineSupport size="14"/>
-                                        <button id="supportBtn" className="ml-1">지원 요청 & 신규 제안</button>
-                                    </label>
+                                    <Button id="supportBtn" bgColor="white" btnName="문서 보기" icon={<IoDocumentText size="14"/>} textColor="var(--btn-blue)" borderColor="var(--btn-blue)"/>
+                                    <Button id="supportBtn" bgColor="white" btnName="지원 요청 & 신규 제안" icon={<MdOutlineSupport size="14"/>} textColor="#717171FF" borderColor="#717171FF"/>
                                 </div>
                             </>}
                     />
