@@ -42,3 +42,10 @@ export interface CategoryInfo {
     // useYn: boolean;
     // deleted: boolean;
 }
+
+export interface TagInfo {
+    id: number;
+    tagName: string;
+    searchCount: number;
+    infoId: number;
+}

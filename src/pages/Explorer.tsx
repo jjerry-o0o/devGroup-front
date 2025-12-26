@@ -1,23 +1,30 @@
 import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn} from "@/assets/icons";
 import {useEffect, useState} from "react";
-import {getUseCategories} from "@/api/infoApi.ts";
-import type {CategoryInfo} from "@/types/info.ts";
+import {getTop10Tags, getUseCategories} from "@/api/infoApi.ts";
+import type {CategoryInfo, TagInfo} from "@/types/info.ts";
 import {SubBox, Button} from "@/components"
 import {Separator} from "@/components/ui";
 
 const Explorer = () => {
     const [categories, setCategories] = useState<CategoryInfo[]>();
+    const [topTags, setTopTags] = useState<TagInfo[]>();
     const SORT_OPTIONS = [
         {id: 'sortStars', value: 'stars', label: '좋아요순', Icon: FaThumbsUp},
         {id: 'sortUpdated', value: 'updated', label: '최근 업데이트순', Icon: Clock},
         {id: 'sortName', value: 'name', label: '이름순', Icon: FaSortAlphaDown},
     ]
 
+
+
     useEffect(() => {
         try {
             getUseCategories().then(res => {
                 const result = res.data;
                 setCategories(result);
+            });
+            getTop10Tags().then((res) => {
+                const result = res.data;
+                setTopTags(result)
             });
         } catch (error) {
             console.log(error)
@@ -80,7 +87,13 @@ const Explorer = () => {
                                 </>}
                         />
                         <SubBox titleIcon="" title="인기토픽" boxWidth="w-[280px]"
-                                content={<></>}
+                                content={<>
+                                {topTags?.map(tag => (
+                                    <div className="inline-flex ">
+                                        <span key={tag.id} className="border rounded-4xl px-[12px] py-[6px]">{tag.tagName}</span>
+                                    </div>
+                                ))}
+                                </>}
                         />
                     </div>
                     <div className="border">DevTool List</div>
