@@ -48,4 +48,9 @@ export interface TagInfo {
     tagName: string;
     searchCount: number;
     infoId: number;
+    className: string;
+}
+
+export interface supportInfo {
+
 }

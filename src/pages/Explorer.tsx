@@ -1,4 +1,4 @@
-import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn} from "@/assets/icons";
+import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn, FaFire} from "@/assets/icons";
 import {useEffect, useState} from "react";
 import {getTop10Tags, getUseCategories} from "@/api/infoApi.ts";
 import type {CategoryInfo, TagInfo} from "@/types/info.ts";
@@ -22,10 +22,20 @@ const Explorer = () => {
                 const result = res.data;
                 setCategories(result);
             });
+
             getTop10Tags().then((res) => {
                 const result = res.data;
+                result.map(function(tagInfo, index) {
+                    tagInfo.className = index % 5 == 0 ? 'badge-primary'
+                        : index % 5 == 1 ? 'badge-success'
+                        : index % 5 == 2 ? 'badge-info'
+                        : index % 5 == 3 ? 'badge-warning'
+                        : 'badge-secondary';
+                })
                 setTopTags(result)
             });
+
+
         } catch (error) {
             console.log(error)
         }
@@ -53,7 +63,7 @@ const Explorer = () => {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col gap-[20px]">
-                        <SubBox titleIcon={<FaFilter size="16px"/>} title={'Filter by'} boxWidth="w-[280px]"
+                        <SubBox titleIcon={<FaFilter size="16px"/>} title={'Filter by'} boxWidth="w-[300px]"
                                 content={<>
                                     <div className="flex flex-col gap-[4px]">
                                         <span className="text-[16px]">Categories</span>
@@ -86,17 +96,21 @@ const Explorer = () => {
                                     <Button id="filterApply" icon={<Search size="18"/>} btnName="필터 적용" textColor="#fff" bgColor="var(--btn-blue)"/>
                                 </>}
                         />
-                        <SubBox titleIcon="" title="인기토픽" boxWidth="w-[280px]"
+                        <SubBox titleIcon="" title="인기토픽" boxWidth="w-[300px]"
                                 content={<>
                                 {topTags?.map(tag => (
                                     <div className="inline-flex ">
-                                        <span key={tag.id} className="border rounded-4xl px-[12px] py-[6px]">{tag.tagName}</span>
+                                        {/*<span key={tag.id} className="border border-[#E1B730FF] rounded-4xl px-[12px] py-[6px] mr-[8px] mb-[8px] bg-[#FFF6D8FF] text-[#C3970AFF]">#{tag.tagName}</span>*/}
+                                        <span key={tag.id} className={`${tag.className} rounded-4xl px-[12px] py-[6px] mr-[8px] mb-[8px]`}>#{tag.tagName}</span>
                                     </div>
                                 ))}
                                 </>}
                         />
                     </div>
-                    <div className="border">DevTool List</div>
+                    <div className="border ml-6">
+                        <span className="flex text-2xl font-medium"><FaFire color="#DC3545FF" size="28" className="mr-2.5"/> DevTool List</span>
+
+                    </div>
                 </div>
             </div>
         </section>

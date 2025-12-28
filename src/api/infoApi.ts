@@ -20,3 +20,7 @@ export const getUseCategories = () => {
 export const getTop10Tags = () => {
     return axiosApi.get<TagInfo[]>(`/tag/topTags`);
 }
+
+export const getSearchInfo = () => {
+    return axiosApi.get<>
+}

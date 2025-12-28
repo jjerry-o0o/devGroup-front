@@ -32,6 +32,7 @@ import { FaFilter } from "react-icons/fa6";
 import { FaSortAlphaDown } from "react-icons/fa";
 import { IoRadioButtonOff } from "react-icons/io5";
 import { IoRadioButtonOn } from "react-icons/io5";
+import { FaFire } from "react-icons/fa6";
 
 export {
     FaTwitter,
@@ -68,4 +69,5 @@ export {
     FaSortAlphaDown,
     IoRadioButtonOff,
     IoRadioButtonOn,
+    FaFire,
 };
