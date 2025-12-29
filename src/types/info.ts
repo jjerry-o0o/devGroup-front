@@ -51,6 +51,40 @@ export interface TagInfo {
     className: string;
 }
 
-export interface supportInfo {
+export interface supportInfoDto {
+    info: supportInfo[];
+    pageResponse: paginInfo;
+}
 
+interface supportInfo {
+    id: number;
+    title: string;
+    isPublic: boolean;
+    introduction: string;
+    thumbnailPath: string;
+    thumbnailWebLink: string;
+    likeCount: number;
+    clickCount: number;
+    updatedAt: string;
+    categoryEnName: string;
+}
+
+interface paginInfo {
+    totalElements: number;
+    totalPages: number;
+    currentPage: number;
+    currentSize: number;
+}
+
+export interface searchRequestDto {
+    keyword: string;
+    categoryName: string;
+    pageRequest: pagingRequest;
+    orderType: string;
+    searchType: string;
+}
+
+interface pagingRequest {
+    page: number;
+    size: number;
 }

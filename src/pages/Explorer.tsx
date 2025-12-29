@@ -1,6 +1,6 @@
 import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn, FaFire} from "@/assets/icons";
 import {useEffect, useState} from "react";
-import {getTop10Tags, getUseCategories} from "@/api/infoApi.ts";
+import {getSearchInfo, getTop10Tags, getUseCategories} from "@/api/infoApi.ts";
 import type {CategoryInfo, TagInfo} from "@/types/info.ts";
 import {SubBox, Button} from "@/components"
 import {Separator} from "@/components/ui";
@@ -35,7 +35,10 @@ const Explorer = () => {
                 setTopTags(result)
             });
 
-
+            getSearchInfo().then(res => {
+                const result = res.data;
+                console.log(result);
+            })
         } catch (error) {
             console.log(error)
         }

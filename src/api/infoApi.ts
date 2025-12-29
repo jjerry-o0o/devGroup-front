@@ -1,5 +1,12 @@
 import axiosApi from '@/api/axiosInstans.ts'
-import type {CategoryInfo, RepositoryDetailInfo, RepositoryInfoDto, TagInfo} from '@/types/info.ts';
+import type {
+    CategoryInfo,
+    RepositoryDetailInfo,
+    RepositoryInfoDto,
+    searchRequestDto,
+    supportInfoDto,
+    TagInfo
+} from '@/types/info.ts';
 
 export const getLimitRepositoryList = (count: number) => {
     return axiosApi.get<RepositoryInfoDto>(`/info/limit/${count}`);
@@ -22,5 +29,12 @@ export const getTop10Tags = () => {
 }
 
 export const getSearchInfo = () => {
-    return axiosApi.get<>
+    const request : searchRequestDto = {
+        keyword: '',
+        categoryName: '',
+        pageRequest: {page: 1, size: 0},
+        searchType: '',
+        orderType: '',
+    }
+    return axiosApi.post<supportInfoDto>(`/search/info`, request);
 }
