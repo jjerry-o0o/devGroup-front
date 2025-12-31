@@ -32,9 +32,9 @@ export const getSearchInfo = () => {
     const request : searchRequestDto = {
         keyword: '',
         categoryName: '',
-        pageRequest: {page: 1, size: 0},
-        searchType: '',
-        orderType: '',
+        pageRequest: {page: 1, size: 9},
+        searchType: 'title',
+        orderType: 'star',
     }
     return axiosApi.post<supportInfoDto>(`/search/info`, request);
 }

@@ -1,20 +1,20 @@
-import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn, FaFire} from "@/assets/icons";
+import {Search, FaArrowRotateRight, FaFilter, Check, FaThumbsUp, Clock, FaSortAlphaDown, IoRadioButtonOff, IoRadioButtonOn, FaFire, GiPlasticDuck} from "@/assets/icons";
 import {useEffect, useState} from "react";
 import {getSearchInfo, getTop10Tags, getUseCategories} from "@/api/infoApi.ts";
-import type {CategoryInfo, TagInfo} from "@/types/info.ts";
+import type {CategoryInfo, pagingInfo, supportInfo, TagInfo} from "@/types/info.ts";
 import {SubBox, Button} from "@/components"
 import {Separator} from "@/components/ui";
 
 const Explorer = () => {
     const [categories, setCategories] = useState<CategoryInfo[]>();
     const [topTags, setTopTags] = useState<TagInfo[]>();
+    const [supports, setSupports] = useState<supportInfo[]>();
+    const [pageInfo, setPageInfo] = useState<pagingInfo>();
     const SORT_OPTIONS = [
         {id: 'sortStars', value: 'stars', label: '좋아요순', Icon: FaThumbsUp},
         {id: 'sortUpdated', value: 'updated', label: '최근 업데이트순', Icon: Clock},
         {id: 'sortName', value: 'name', label: '이름순', Icon: FaSortAlphaDown},
     ]
-
-
 
     useEffect(() => {
         try {
@@ -37,6 +37,8 @@ const Explorer = () => {
 
             getSearchInfo().then(res => {
                 const result = res.data;
+                setSupports(result.info);
+                setPageInfo(result.pageResponse);
                 console.log(result);
             })
         } catch (error) {
@@ -112,7 +114,14 @@ const Explorer = () => {
                     </div>
                     <div className="border ml-6">
                         <span className="flex text-2xl font-medium"><FaFire color="#DC3545FF" size="28" className="mr-2.5"/> DevTool List</span>
+                        {supports?.map(support => {
+                            const thumbnail = support.thumbnailPath ? support.thumbnailPath : support.thumbnailWebLink ? support.thumbnailWebLink : null;
+                            return (
+                            <div>
+                                {thumbnail ? <img src={thumbnail} alt={support.title} className="w-10 h-10 object-cover radi"/> : <GiPlasticDuck size="40" className="p-1"/>}
 
+                            </div>
+                        )})}
                     </div>
                 </div>
             </div>

@@ -53,10 +53,10 @@ export interface TagInfo {
 
 export interface supportInfoDto {
     info: supportInfo[];
-    pageResponse: paginInfo;
+    pageResponse: pagingInfo;
 }
 
-interface supportInfo {
+export interface supportInfo {
     id: number;
     title: string;
     isPublic: boolean;
@@ -69,7 +69,7 @@ interface supportInfo {
     categoryEnName: string;
 }
 
-interface paginInfo {
+export interface pagingInfo {
     totalElements: number;
     totalPages: number;
     currentPage: number;
