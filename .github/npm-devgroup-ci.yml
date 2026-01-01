@@ -1,0 +1,15 @@
+name: NPM CI Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+      - name: Install Dependencies
+        run: time npm ci # 시간 체크를 위해 time 명령어 사용
+      - name: Build
+        run: npm run build
